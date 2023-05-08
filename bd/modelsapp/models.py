@@ -1,5 +1,9 @@
 from django.db import models
 
+# Create your models here.
+from django.db import models
+from django.urls import reverse
+
 
 # Create your models here.
 class Provider(models.Model):
@@ -21,6 +25,9 @@ class Product(models.Model):
     provider = models.ForeignKey(Provider, on_delete=models.CASCADE, default=None, verbose_name="Поставщик")
     price = models.DecimalField(max_digits=100, decimal_places=2, verbose_name="Цена")
 
+    def get_absolute_url(self):
+        return reverse('product', kwargs={'pk': self.pk})
+
     def __str__(self):
         return self.name
 
@@ -32,6 +39,9 @@ class Product(models.Model):
 class Buyer(models.Model):
     name = models.CharField(max_length=50, verbose_name="Имя покупателя")
     products = models.ManyToManyField(Product, verbose_name="Продукты")
+
+    def get_absolute_url(self):
+        return reverse('buyer', kwargs={'buyer_pk': self.pk})
 
     def __str__(self):
         return self.name

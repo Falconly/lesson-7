@@ -1,0 +1,19 @@
+{% extends 'modelsapp/base.html' %}
+
+{% block content %}
+	{% if not flag %}
+
+		{% for p in products %}
+			<ul style="list-style: none;font-size: 24px;">
+				<li>Название: <a href="{{p.get_absolute_url}}" style="text-decoration: none;">{{ p.name }}</a></li>
+			</ul>
+		{% endfor %}
+	{% else %}
+		<ul style="list-style: none;font-size: 24px;">
+			<li>Название: {{ product.name }}</li>
+			<li>Срок годности: {{ product.expiration_date }}</li>
+			<li>Поставщик: {{ product.provider }}</li>
+			<li>Цена: {{ product.price }}</li></li>
+		</ul>
+	{% endif %}
+{% endblock %}
