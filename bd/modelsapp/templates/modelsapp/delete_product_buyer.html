@@ -1,0 +1,11 @@
+{% extends 'modelsapp/base.html' %}
+
+{% block content %}
+<form method="post">
+	{% csrf_token %}
+	<div class="" style="width:50%;height:200px;margin:auto;">
+		<h3 style="text-align:center;">Вы действительно хотите удалить продукт/покупателя "{{object.name}}"?</h3>
+		<button type="submit" class="btn btn-success mt-5" style="width: 60%;margin:auto;display:block;">Подтвердить</button>
+	</div>
+</form>
+{% endblock %}
