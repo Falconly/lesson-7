@@ -1,27 +1,9 @@
 {% extends 'modelsapp/base.html' %}
 
 {% block content %}
-
-	{% if not flag %}
-		
-		{% for b in buyers %}
-			<ul style="list-style: none;">
-				<li><a href="{{ b.get_absolute_url }}" style="text-decoration:none;color:blue;font-size: 24px">{{ b.name }}</a></li>
-			</ul> 
-		{% endfor %}
-
-	{% else %}
-
-		<span style="font-size: 24px">Корзина покупателя "{{buyer.name}}":</span>
-		{% if products %}
-			<ul style="font-size: 24px;">
-				{% for p in products %}
-				<li>{{ p.name }} <a href="{% url 'delete_product' buyer.pk p.pk %}" style="text-decoration:none;color:red;"> Выложить из корзины</a></li>
-				{% endfor %}
-			</ul>
-		{% else %}
-			<h2>Корзина пуста</h2>
-		{% endif %}
-
-	{% endif %}
+{% for b in buyers %}
+	<ul style="list-style: none;">
+		<li><a href="{{ b.get_absolute_url }}" style="text-decoration:none;color:blue;font-size: 24px">{{ b.name }}</a></li>
+	</ul> 
+{% endfor %}
 {% endblock %}

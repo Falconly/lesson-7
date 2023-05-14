@@ -8,7 +8,6 @@ from django.urls import reverse
 # Create your models here.
 class Provider(models.Model):
     company = models.CharField(max_length=100, verbose_name="Название транспортной компании", unique=True)
-    delivery_date = models.DateField(verbose_name="Дата поставки")
     transport = models.CharField(max_length=100, verbose_name="Тип транспорта")
 
     def __str__(self):
@@ -21,8 +20,8 @@ class Provider(models.Model):
 
 class Product(models.Model):
     name = models.CharField(max_length=100, verbose_name="Название продукта", unique=True)
-    expiration_date = models.DateField(default=None, verbose_name="Срок годности")
-    provider = models.ForeignKey(Provider, on_delete=models.CASCADE, default=None, verbose_name="Поставщик")
+    expiration_date = models.DateField(verbose_name="Срок годности", null=True, blank=True)
+    provider = models.ForeignKey(Provider, on_delete=models.SET_NULL, null=True, verbose_name="Поставщик")
     price = models.DecimalField(max_digits=100, decimal_places=2, verbose_name="Цена")
 
     def get_absolute_url(self):

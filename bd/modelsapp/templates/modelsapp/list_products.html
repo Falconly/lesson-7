@@ -1,19 +1,22 @@
 {% extends 'modelsapp/base.html' %}
 
 {% block content %}
-	{% if not flag %}
+<div style="margin: auto; width: 50%;">
+	<form role="search" method="get">
+			{{ form }}
+	</form>
+	<form role="search" method="get">
+			{{ form_price }}
+	</form>
+</div>
+{% for p in products %}
+	<ul style="list-style: none;font-size: 24px;margin-top: 30px;">
+		<div>
+			<li style="display: inline-block;">Название: <a href="{{p.get_absolute_url}}" style="text-decoration: none;">{{ p.name }}</a></li>
+			<span class="fs-5">Цена: {{p.price}} руб.</span>
+		</div>
 
-		{% for p in products %}
-			<ul style="list-style: none;font-size: 24px;">
-				<li>Название: <a href="{{p.get_absolute_url}}" style="text-decoration: none;">{{ p.name }}</a></li>
-			</ul>
-		{% endfor %}
-	{% else %}
-		<ul style="list-style: none;font-size: 24px;">
-			<li>Название: {{ product.name }}</li>
-			<li>Срок годности: {{ product.expiration_date }}</li>
-			<li>Поставщик: {{ product.provider }}</li>
-			<li>Цена: {{ product.price }}</li></li>
-		</ul>
-	{% endif %}
+	</ul>
+{% endfor %}
+
 {% endblock %}
