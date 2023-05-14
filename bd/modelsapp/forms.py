@@ -12,7 +12,7 @@ class ProductSearchNameForm(forms.Form):
 class ProductSearchPriceForm(forms.Form):
     product_price = forms.CharField(label="Поиск по цене", required=False)
     product_price.widget.attrs.update(
-        {'class': 'form-control', 'placeholder': 'Число должно быть в десятичном виде: 45.00'})
+        {'class': 'form-control', 'placeholder': 'Число должно быть в десятичном виде: 45.34'})
 
 
 class AddProductForm(forms.ModelForm):
