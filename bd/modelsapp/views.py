@@ -70,7 +70,7 @@ def delete_product_view(request, buyer_pk, pk):
     product = Product.objects.get(pk=pk)
     buyer.products.remove(product)  # Удаление отношения между моделями Buyer, Product
     buyer.save()
-    return redirect('buyer', buyer_pk=buyer_pk)
+    return redirect('modelsapp:buyer', buyer_pk=buyer_pk)
 
 
 class AddProductView(CreateView):
@@ -78,7 +78,8 @@ class AddProductView(CreateView):
     template_name = 'modelsapp/add_product.html'
     extra_context = {'title': 'Добавление продукта',
                      'button_name': 'Добавить'}
-    success_url = reverse_lazy('list_products')
+    success_url = reverse_lazy('modelsapp:list_products')
+    model = Product
 
 
 class UpdateProductView(UpdateView):
@@ -103,7 +104,7 @@ class UpdateProductView(UpdateView):
 class DeleteProductView(DeleteView):
     model = Product
     template_name = 'modelsapp/delete_product_buyer.html'
-    success_url = reverse_lazy('list_products')
+    success_url = reverse_lazy('modelsapp:list_products')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -123,7 +124,7 @@ class AddBuyerView(CreateView):
     model = Buyer
     form_class = AddBuyerForm
     template_name = 'modelsapp/add_buyer.html'
-    success_url = reverse_lazy('list_buyers')
+    success_url = reverse_lazy('modelsapp:list_buyers')
     extra_context = {'title': 'Добавление покупателя',
                      'button_name': 'Добавить'}
 
@@ -132,7 +133,7 @@ class UpdateBuyerView(UpdateView):
     model = Buyer
     form_class = AddBuyerForm
     template_name = 'modelsapp/add_buyer.html'
-    success_url = reverse_lazy('list_buyers')
+    success_url = reverse_lazy('modelsapp:list_buyers')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -151,7 +152,7 @@ class UpdateBuyerView(UpdateView):
 class DeleteBuyerView(DeleteView):
     model = Buyer
     template_name = 'modelsapp/delete_product_buyer.html'
-    success_url = reverse_lazy('list_buyers')
+    success_url = reverse_lazy('modelsapp:list_buyers')
     extra_context = {'title': 'Удаление покупателя'}
 
     def get_context_data(self, **kwargs):

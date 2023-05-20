@@ -25,7 +25,7 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=100, decimal_places=2, verbose_name="Цена")
 
     def get_absolute_url(self):
-        return reverse('product', kwargs={'pk': self.pk})
+        return reverse('modelsapp:product', kwargs={'pk': self.pk})
 
     def __str__(self):
         return self.name
@@ -40,7 +40,7 @@ class Buyer(models.Model):
     products = models.ManyToManyField(Product, verbose_name="Продукты")
 
     def get_absolute_url(self):
-        return reverse('buyer', kwargs={'buyer_pk': self.pk})
+        return reverse('modelsapp:buyer', kwargs={'buyer_pk': self.pk})
 
     def __str__(self):
         return self.name

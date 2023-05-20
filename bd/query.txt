@@ -2,7 +2,7 @@ b1 = Buyer.objects.first()
 b1.products.all()
 <QuerySet [<Product: Мороженое>, <Product: Шоколад>]>
 
-Product.objects.count() 
+Product.objects.count()
 8
 
 Product.objects.filter(name__in=['Клубника', 'Помидор'])
@@ -22,13 +22,13 @@ Product.objects.values('provider').annotate(Count('provider'))
 Buyer.objects.annotate(total=Count('products')).filter(total__gt=3)  
 <QuerySet [<Buyer: Виктор>, <Buyer: Михаил>]>
 
-Product.objects.all().order_by('price') 
+Product.objects.all().order_by('price')
 <QuerySet [<Product: Бутылка воды>, <Product: Молоко>, <Product: Йогурт>, <Product: Мороженое>, <Product: Шоколад>, <Product: Яйца>, <Product: Яблоки>, <Product: Клубника>]>
 
-Product.objects.aggregate(Max('price'), Min('price')) 
+Product.objects.aggregate(Max('price'), Min('price'))
 {'price__max': Decimal('321'), 'price__min': Decimal('30')}
 
-Product.objects.filter(Q(price__gt=60) | Q(price__lt=30)) 
+Product.objects.filter(Q(price__gt=60) | Q(price__lt=30))
 <QuerySet [<Product: Мороженое>, <Product: Яблоки>, <Product: Клубника>, <Product: Шоколад>, <Product: Яйца>]>
 
 

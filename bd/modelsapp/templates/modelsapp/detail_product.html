@@ -11,6 +11,6 @@
 		<li>Поставщик: {{ product.provider }}</li>
 		<li>Цена: {{ product.price }}</li></li>
 </ul>
-<a class="btn btn-primary" href="{% url 'update_product' product.pk %}" >Редактировать</a>
-<a class="btn btn-danger" href="{% url 'delete_product' product.pk %}" >Удалить</a>
+<a class="btn btn-primary" href="{% url 'modelsapp:update_product' product.pk %}" >Редактировать</a>
+<a class="btn btn-danger" href="{% url 'modelsapp:delete_product' product.pk %}" >Удалить</a>
 {% endblock %}
