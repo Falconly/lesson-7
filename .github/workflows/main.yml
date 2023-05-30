@@ -36,7 +36,7 @@ jobs:
         working-directory: ./bd
         run: |
           flake8 --exit-zero modelsapp
-          
+  
   build:
       name: Build and push
       if: github.ref == 'refs/heads/master'
