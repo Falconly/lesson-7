@@ -12,21 +12,27 @@ jobs:
   
     steps: 
       - uses: actions/checkout@v2
+      
       - name: Setup Python ${{ matrix.python-version }}
         uses: actions/setup-python@v1
+        
         with:
           python-version: ${{ matrix.python-version }}
         
+        
       - name: Install dependencies
+        working-directory: ./bd
         run: |
           python -m pip install --upgrade pip
-          pip install -r bd/requirements.txt
+          pip install -r requirements.txt
       
       - name: Run tests
+        working-directory: ./bd
         run: |
           python manage.py test modelsapp
         
       - name: Run flake8
+        working-directory: ./bd
         run: |
           flake8 modelsapp
           
