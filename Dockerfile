@@ -1,6 +1,6 @@
 FROM python:3.11.2
 
-COPY requirements.txt /tmp
+COPY bd/requirements.txt /tmp
 
 RUN pip install -r /tmp/requirements.txt
 
